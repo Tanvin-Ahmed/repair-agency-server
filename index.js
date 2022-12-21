@@ -6,6 +6,8 @@ const fileUpload = require("express-fileupload");
 const paymentRoutes = require("./src/routes/paymentRoutes");
 const adminRoutes = require("./src/routes/adminRoutes");
 const categoryRoutes = require("./src/routes/categoryRoutes");
+const orderRoutes = require("./src/routes/orderRoutes");
+const serviceRoutes = require("./src/routes/serviceRoutes");
 
 const app = express();
 app.use(express.json());
@@ -19,6 +21,8 @@ require("./src/db/db")();
 app.use("/payment", paymentRoutes);
 app.use("/admin", adminRoutes);
 app.use("/category", categoryRoutes);
+app.use("/order", orderRoutes);
+app.use("/order", serviceRoutes);
 
 const MongoClient = Mongodb.MongoClient;
 const ObjectID = Mongodb.ObjectID;
