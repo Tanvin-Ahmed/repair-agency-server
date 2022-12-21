@@ -8,6 +8,7 @@ const adminRoutes = require("./src/routes/adminRoutes");
 const categoryRoutes = require("./src/routes/categoryRoutes");
 const orderRoutes = require("./src/routes/orderRoutes");
 const serviceRoutes = require("./src/routes/serviceRoutes");
+const reviewRoutes = require("./src/routes/reviewRoutes");
 
 const app = express();
 app.use(express.json());
@@ -22,7 +23,8 @@ app.use("/payment", paymentRoutes);
 app.use("/admin", adminRoutes);
 app.use("/category", categoryRoutes);
 app.use("/order", orderRoutes);
-app.use("/order", serviceRoutes);
+app.use("/service", serviceRoutes);
+app.use("/review", reviewRoutes);
 
 const MongoClient = Mongodb.MongoClient;
 const ObjectID = Mongodb.ObjectID;
