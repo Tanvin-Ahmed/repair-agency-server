@@ -7,4 +7,6 @@ module.exports.app = {
   review_collection: process.env.DB_REVIEW_COLLECTION,
   order_collection: process.env.DB_ORDER_COLLECTION,
   category_collection: process.env.DB_CATEGORY_COLLECTION,
+
+  jwt_secrate: process.env.JWT_SECRATE_KEY,
 };
