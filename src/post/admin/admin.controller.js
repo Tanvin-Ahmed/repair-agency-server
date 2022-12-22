@@ -1,3 +1,4 @@
+const { generateToken } = require("../../middlewares/auth/generateToken");
 const { findAdminByEmail, createAdmin } = require("./admin.service");
 
 const makeAdmin = async (req, res) => {
@@ -12,11 +13,16 @@ const makeAdmin = async (req, res) => {
 
 const isAdmin = async (req, res) => {
   try {
-    const admin = await findAdminByEmail(req.params.email);
+    const { email, displayName } = req.query;
+    const admin = await findAdminByEmail(email);
     if (admin) {
-      return res.status(200).json({ isAdmin: true, token: "" });
+      const data = { email, displayName, isAdmin: true };
+      const token = generateToken(data);
+      return res.status(200).json({ token });
     } else {
-      return res.status(404).json({ isAdmin: false });
+      const data = { email, displayName, isAdmin: false };
+      const token = generateToken(data);
+      return res.status(200).json({ token });
     }
   } catch (error) {
     return res.status(500).json({ message: error.message });

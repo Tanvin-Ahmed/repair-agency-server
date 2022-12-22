@@ -3,8 +3,7 @@ const { app } = require("../../config/app");
 
 module.exports.isUser = async (req, res, next) => {
   try {
-    let token =
-      req.body.token || req.query.token || req.headers["authorization"];
+    let token = req.headers["authorization"];
     token = token.split(" ")[1];
     const decoded = jwt.verify(token, app.jwt_secrate);
     req.user = decoded.data;
