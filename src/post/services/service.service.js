@@ -6,12 +6,17 @@ const createService = async (info) => {
 };
 
 const findServicesByCategory = async (category) => {
-  return await ServiceModel.findOne({ category });
+  return await ServiceModel.find({ category });
 };
 
 const findServiceById = async (id) => {
   const _id = mongoose.Types.ObjectId(id);
   return await ServiceModel.findById(_id);
+};
+
+const findServiceByIdWithoutImg = async (id) => {
+  const _id = mongoose.Types.ObjectId(id);
+  return await ServiceModel.findById(_id).select("-image");
 };
 
 const updateService = async (info) => {
@@ -45,4 +50,5 @@ module.exports = {
   updateService,
   deleteServiceById,
   deleteServicesByCategory,
+  findServiceByIdWithoutImg,
 };

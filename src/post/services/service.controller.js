@@ -5,6 +5,7 @@ const {
   findServiceById,
   deleteServiceById,
   updateService,
+  findServiceByIdWithoutImg,
 } = require("./service.service");
 
 const addService = async (req, res) => {
@@ -66,6 +67,16 @@ const getServicesById = async (req, res) => {
   }
 };
 
+const getServiceByIdWithoutImg = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const service = await findServiceByIdWithoutImg(id);
+    return res.status(200).json(service);
+  } catch (error) {
+    return res.status(500).json({ message: error.message, success: false });
+  }
+};
+
 const modifyService = async (req, res) => {
   try {
     const _id = req.params.id;
@@ -103,4 +114,5 @@ module.exports = {
   getServicesById,
   modifyService,
   deleteSerivce,
+  getServiceByIdWithoutImg,
 };

@@ -6,7 +6,7 @@ const createOrder = async (info) => {
 };
 
 const findOrderListByEmail = async (email) => {
-  return await OrderModel.findOne({ email });
+  return await OrderModel.find({ email });
 };
 
 const findAllOrderList = async () => {

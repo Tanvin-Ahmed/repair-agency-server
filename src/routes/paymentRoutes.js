@@ -10,6 +10,7 @@ route.post("/create-payment-intent", isUser, async (req, res) => {
     const clientSecrate = await getPaymentIntent(price);
     return res.status(200).json({ clientSecrate });
   } catch (error) {
+    console.log(error);
     return res.status(500).json({ message: error.message });
   }
 });

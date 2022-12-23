@@ -1,4 +1,5 @@
 const express = require("express");
+const { isAdmin } = require("../middlewares/auth/isAdmin");
 const {
   getAllCategory,
   getAllCategoryName,
@@ -9,6 +10,6 @@ const route = express.Router();
 
 route.get("/all", getAllCategory);
 route.get("/all-name", getAllCategoryName);
-route.delete("/deleteCategory/:category", deleteCategory);
+route.delete("/deleteCategory/:category", isAdmin, deleteCategory);
 
 module.exports = route;

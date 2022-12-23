@@ -1,4 +1,5 @@
 const express = require("express");
+const { isUser } = require("../middlewares/auth/isUser");
 const {
   makeReview,
   getAllReviews,
@@ -6,7 +7,7 @@ const {
 
 const route = express.Router();
 
-route.post("/add", makeReview);
+route.post("/add", isUser, makeReview);
 route.get("/getAll", getAllReviews);
 
 module.exports = route;

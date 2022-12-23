@@ -11,7 +11,7 @@ const makeAdmin = async (req, res) => {
   }
 };
 
-const isAdmin = async (req, res) => {
+const findAdmin = async (req, res) => {
   try {
     const { email, displayName } = req.query;
     const admin = await findAdminByEmail(email);
@@ -31,5 +31,5 @@ const isAdmin = async (req, res) => {
 
 module.exports = {
   makeAdmin,
-  isAdmin,
+  findAdmin,
 };

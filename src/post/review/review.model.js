@@ -9,6 +9,10 @@ const reviewSchema = new Schema(
       type: String,
       require: true,
     },
+    email: {
+      type: String,
+      require: true,
+    },
     rate: {
       type: String,
       require: true,

@@ -1,4 +1,6 @@
 const express = require("express");
+const { isAdmin } = require("../middlewares/auth/isAdmin");
+const { isUser } = require("../middlewares/auth/isUser");
 const {
   makeOrder,
   getUserOrders,
@@ -8,9 +10,9 @@ const {
 
 const route = express.Router();
 
-route.post("/placeOrder", makeOrder);
-route.get("/userOrderList/:email", getUserOrders);
-route.get("/getFullOrderList", getAllOrders);
-route.put("/updateStatus/:id", updateOrder);
+route.post("/placeOrder", isUser, makeOrder);
+route.get("/userOrderList/:email", isUser, getUserOrders);
+route.get("/getFullOrderList", isAdmin, getAllOrders);
+route.put("/updateStatus/:id", isAdmin, updateOrder);
 
 module.exports = route;
