@@ -2,7 +2,7 @@ const { createReveiw, findAllReviews } = require("./review.service");
 
 const makeReview = async (req, res) => {
   try {
-    const review = req.body.newReview;
+    const review = req.body;
     const newReview = await createReveiw(review);
     return res.status(200).json(newReview);
   } catch (error) {

@@ -4,7 +4,6 @@ const {
   getServicesByCategory,
   getServicesById,
   deleteSerivce,
-  deleteSerivces,
   modifyService,
 } = require("../post/services/service.controller");
 
@@ -15,6 +14,5 @@ route.get("/serviceItem/:category", getServicesByCategory);
 route.get("/:id", getServicesById);
 route.put("/update/:id", modifyService);
 route.delete("/deleteServiceItem/:id", deleteSerivce);
-route.delete("/deleteCategory", deleteSerivces);
 
 module.exports = route;

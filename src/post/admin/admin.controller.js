@@ -4,8 +4,8 @@ const { findAdminByEmail, createAdmin } = require("./admin.service");
 const makeAdmin = async (req, res) => {
   try {
     const info = { adminEmail: req.body.newAdmin };
-    const admin = await createAdmin(info);
-    return res.status(200).json(admin);
+    await createAdmin(info);
+    return res.status(200).json({ message: "Admin created successfully!" });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
